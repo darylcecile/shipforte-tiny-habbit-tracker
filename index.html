@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f8f2" />
+    <meta name="description" content="A calm little place to grow your habits. Small steps, visible progress, one day at a time." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>day by day — A little progress, every day</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#habits-title">Skip to your habits</a>
+    <div id="app"></div>
+    <div id="notice" class="toast" hidden>
+      <span id="notice-message" role="status"></span>
+      <button id="notice-undo" class="text-button" hidden>Undo</button>
+      <button id="notice-close" class="icon-button" aria-label="Dismiss notification"></button>
+    </div>
+    <div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+    <dialog id="habit-dialog" aria-labelledby="dialog-title">
+      <form id="habit-form" novalidate>
+        <div class="dialog-heading">
+          <span class="eyebrow" id="dialog-eyebrow">A SMALL BEGINNING</span>
+          <button type="button" class="icon-button" data-close aria-label="Close habit dialog"></button>
+        </div>
+        <h2 id="dialog-title">Make room for a good habit.</h2>
+        <p class="muted" id="dialog-description">Keep it small. Make it something you can come back to.</p>
+        <label class="input-label" for="habit-name">Habit name</label>
+        <input id="habit-name" name="name" placeholder="e.g. Read a few pages" maxlength="100" autocomplete="off" autocapitalize="sentences" enterkeyhint="done" required aria-describedby="name-error name-hint" />
+        <p id="name-error" class="field-error" role="alert" hidden></p>
+        <p id="name-hint" class="field-hint">A little specific is a little easier. Up to 100 characters.</p>
+        <fieldset><legend>Make it yours</legend><div id="color-options" class="color-options"></div></fieldset>
+        <div id="delete-confirm" class="delete-confirm" hidden>
+          <strong>Remove this habit?</strong>
+          <p>Its check-ins will be removed too. You can undo this right after removing it.</p>
+          <div class="button-row"><button type="button" id="confirm-delete" class="button danger">Yes, remove habit</button><button type="button" id="cancel-delete" class="button secondary">Keep it</button></div>
+        </div>
+        <div class="dialog-actions">
+          <button type="button" id="delete-habit" class="text-button danger-text" hidden>Remove habit</button>
+          <div class="button-row"><button type="button" class="button secondary" data-close>Cancel</button><button type="submit" id="save-habit" class="button primary">Add habit</button></div>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="data-dialog" aria-labelledby="data-title">
+      <div class="dialog-heading"><span class="eyebrow">JUST FOR YOU</span><button class="icon-button" data-close aria-label="Close data dialog"></button></div>
+      <h2 id="data-title">Your habits live here.</h2>
+      <p class="muted">Your habits and check-ins are saved automatically in this browser, on this device. No account, no tracking, no server.</p>
+      <p class="muted">They stay through reloads and browser restarts. Clearing site data or using a private window can erase them. Other browsers and devices have their own habits.</p>
+      <div class="data-detail"><span>Storage</span><strong>Local to this browser</strong></div>
+      <div class="data-detail"><span>Calendar</span><strong id="timezone-label"></strong></div>
+      <details class="reset-section"><summary>Start fresh</summary><p>This permanently removes every habit and check-in from this browser.</p><button id="reset-data" class="button danger">Erase all habits & history</button></details>
+    </dialog>
+    <noscript>This little habit tracker needs JavaScript. Please enable it to start growing your habits.</noscript>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
